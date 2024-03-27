@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <link rel="stylesheet" href="/css/home/codeData/codeData.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: '코드 정보 관리' }) %>
+<section>
+    <div>
+        <br>
+        <table class="codeData_table" id="code_table">
+          <thead>
+            <tr>
+              <th>코드</th>
+              <th>코드명</th>
+              <th>코드설명</th>
+              <th>사용여부</th>
+              <th>상세 코드</th>
+              <!-- <th>수정</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i<9 ;i++){ %>
+              <tr>
+                <td><%=code_data.code_data_name[i].code%></td>
+                <td><%=code_data.code_data_name[i].code_name%> </td>
+                <td><%=code_data.code_data_name[i].code_desc%> </td>
+                <td><%=code_data.code_data_name[i].code_use_yn%> </td>
+                <td><a href="/admin/codeData/detail/<%=code_data.code_data_name[i].code %>">조회</a></td>
+                <!-- <td><a href="/admin/codeData/update/<%=code_data.code_data_name[i].code %>">수정</a></td> -->
+              </tr>  
+            <% } %>
+            <tr>
+              <td>10</td>
+              <td>무화과 이벤트</td>
+              <td>무화과 지급 수량</td>
+              <td>Y</td>
+              <td><a href="/admin/codeData/eventDetail">조회</a></td>
+              <td></td>
+            </tr>
+        </table>
+    </div>
+</section>
+</div>
+</body>
+</html>

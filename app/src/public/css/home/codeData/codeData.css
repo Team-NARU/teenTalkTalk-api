@@ -1,0 +1,21 @@
+
+/* 테이블 스타일 */
+.codeData_table {
+    width: 100%;
+    border-collapse: collapse; /* 테두리 겹침 방지 */
+    margin-top: 10px; /* 테이블과 다른 요소들 간격 조정 */
+    text-align: center; /* 셀 내용 중앙 정렬 */
+  }
+  
+  .codeData_table th, .codeData_table td {
+    border-bottom: 1px solid #C9C9C9; /* 각 행을 구분하는 선 */
+    padding: 8px; /* 셀 안의 내용과 셀 테두리 간격 설정 */
+  }
+  
+  .codeData_table th {
+    background-color: rgba(240, 241, 247, 0.50); /* 테이블 제목 배경색 설정 */
+  }
+  
+  .codeData_table td {
+    background-color: white; /* 테이블 셀 배경색 설정 */
+  }

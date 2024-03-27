@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/semantic/semantic.min.css">
+  <link rel="stylesheet" href="/css/home/dataif/memPage.css">
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs') %>
+<section>
+    <!-- 태스트 페이지 -->
+    <div>
+        <div class="pagename">회원 정보 관리</div>
+        <br>
+        <form action="/admin/dataif/findID" method="post" name="findID" id="findID">
+            <div class="ui form">
+                <div class="inline fields">
+                    <label>이름</label>
+                    <div class="four wide field">
+                        <input type="text" name="name" id="name" placeholder="이름">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <label>이메일</label>
+                    <div class="four wide field">
+                        <input type="text" name="email" id="email" placeholder="이메일">
+                    </div>
+                </div>
+                <div class="inline fields">
+                    <label>인증번호</label>
+                    <div class="four wide field">
+                        <input type="text" name="authNum" id="authNum" placeholder="인증번호">
+                    </div>
+                    <button class="ui button" type="button" onclick="sendAuthNum()">인증번호 받기</button>
+                    <script>
+                        function sendAuthNum(){
+                            var email = document.getElementById("email").value;
+                            if(email == ""){
+                                alert("이메일을 입력해주세요.");
+                                return;
+                            }
+                            var data = {
+                                email : email
+                            }
+                            $.ajax({
+                                type: "POST",
+                                url: "/admin/dataif/sendAuthNum",
+                                data: data,
+                                success: function(result){
+                                    if(result == "success"){
+                                        alert("인증번호가 전송되었습니다.");
+                                    }else{
+                                        alert("인증번호 전송에 실패하였습니다.");
+                                    }
+                                }
+                            });
+                        }
+                    </script>
+                </div>
+            </div>
+            <button class="ui button" type="submit">찾기</button>
+        </form> 
+        <script>
+            // id 값을 가져와서 표시하는 함수
+            function displayId() {
+              var id = '<%= id %>'; // id 값 받아오기
+        
+              if (id) {
+                var idElement = document.createElement('p');
+                idElement.textContent = '회원님의 아이디는 : ' + id + ' 입니다.';
+                document.getElementById('findID').prepend(idElement);
+              }
+            }
+        
+            // 페이지 로드 시 displayId 함수 호출
+            window.addEventListener('DOMContentLoaded', displayId);
+          </script>  
+</section>

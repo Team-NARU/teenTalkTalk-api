@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.pagename {
+    font-weight: bold;
+    font-size: 26px;
+    padding: 20px;
+    /* color: #FFAB94; */
+  }
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: left; /* Here, we change the text alignment to left */
+}
+
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+form input[type="submit"] {
+    border: none;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+

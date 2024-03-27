@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <link rel="stylesheet" href="/css/home/policy/upload.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: '정책 수정' }) %>
+<section>
+  <div>
+    <form action="/admin/policy/update/<%=post.board_idx %>" method="post" enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="label-field">정책 이름</div>
+        <div class="input-field">
+          <div class="input-container">
+            <input type="text" name="name" id="policy_name" value="<%= post.policy_name %>">
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">지원금</div>
+        <div class="input-field">
+          <div class="input-container">
+            <input type="text" name="min_fund" id="up_min_fund" value="<%= post.min_fund %>">
+          </div>
+          <label>~</label>
+          <div class="input-container">
+            <input type="text" name="max_fund" id="up_max_fund" value="<%= post.max_fund %>">
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">정책 대상</div>
+        <div class="input-field">
+          <div class="dropdown-container">
+            <select class="ui fluid dropdown" name="target" id="target">
+              <%for(var i=0; i<code_data.policy_target_code.length; i++){%>
+                <%if(code_data.policy_target_code[i].code_detail == post.policy_target_code){%>
+                  <option value="<%=code_data.policy_target_code[i].code_detail%>" selected><%=code_data.policy_target_code[i].code_detail_name%></option>
+                <%}else{%>
+                  <option value="<%=code_data.policy_target_code[i].code_detail%>"><%=code_data.policy_target_code[i].code_detail_name%></option>
+                <%}%>
+              <%}%>
+            </select>
+            <div class="dropdown-icon-container"> <!-- Add a container around the icon -->
+              <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.8123 1.91394L5.73399 5.99225C5.48372 6.24251 5.07796 6.24251 4.8277 5.99225L0.749389 1.91394C0.499124 1.66367 0.499124 1.25791 0.749389 1.00764C0.999655 0.75738 1.40542 0.75738 1.65568 1.00765L5.28084 4.63281L8.90601 1.00765C9.15628 0.75738 9.56204 0.75738 9.8123 1.00765C10.0626 1.25791 10.0626 1.66367 9.8123 1.91394Z" fill="black"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">주관 기관</div>
+        <div class="input-field">
+          <div class="dropdown-container">
+            <select class="ui fluid dropdown" name="policy_institution_code" id="policy_institution_code">
+              <%for(var i=0; i<code_data.policy_institution_code.length; i++){%>
+                <%if(code_data.policy_institution_code[i].code_detail == post.policy_institution_code){%>
+                  <option value="<%=code_data.policy_institution_code[i].code_detail%>" selected><%=code_data.policy_institution_code[i].code_detail_name%></option>
+                <%}else{%>
+                  <option value="<%=code_data.policy_institution_code[i].code_detail%>"><%=code_data.policy_institution_code[i].code_detail_name%></option>
+                <%}%>
+              <%}%>
+            </select>
+            <div class="dropdown-icon-container"> <!-- Add a container around the icon -->
+              <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.8123 1.91394L5.73399 5.99225C5.48372 6.24251 5.07796 6.24251 4.8277 5.99225L0.749389 1.91394C0.499124 1.66367 0.499124 1.25791 0.749389 1.00764C0.999655 0.75738 1.40542 0.75738 1.65568 1.00765L5.28084 4.63281L8.90601 1.00765C9.15628 0.75738 9.56204 0.75738 9.8123 1.00765C10.0626 1.25791 10.0626 1.66367 9.8123 1.91394Z" fill="black"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">접수 시작</div>
+        <div class="input-field">
+          <div class="input-container">
+            <input type="date" name="application_start_date" id="policy_application_start_date" value="<%=start_date%>">
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">접수 마감</div>
+        <div class="input-field">
+          <div class="input-container">
+            <input type="date" name="application_end_date" id="policy_application_end_date" value="<%=end_date%>">
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">정책 분야</div>
+        <div class="input-field">
+          <div class="dropdown-container">
+            <select class="ui fluid dropdown" name="policy_field_code" id="policy_field_code">
+              <%for(var i=0; i<code_data.policy_field_code.length; i++){%>
+                <%if(code_data.policy_field_code[i].code_detail == post.policy_field_code){%>
+                  <option value="<%=code_data.policy_field_code[i].code_detail%>" selected><%=code_data.policy_field_code[i].code_detail_name%></option>
+                <%}else{%>
+                  <option value="<%=code_data.policy_field_code[i].code_detail%>"><%=code_data.policy_field_code[i].code_detail_name%></option>
+                <%}%>
+              <%}%>
+            </select>
+            <div class="dropdown-icon-container"> <!-- Add a container around the icon -->
+              <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.8123 1.91394L5.73399 5.99225C5.48372 6.24251 5.07796 6.24251 4.8277 5.99225L0.749389 1.91394C0.499124 1.66367 0.499124 1.25791 0.749389 1.00764C0.999655 0.75738 1.40542 0.75738 1.65568 1.00765L5.28084 4.63281L8.90601 1.00765C9.15628 0.75738 9.56204 0.75738 9.8123 1.00765C10.0626 1.25791 10.0626 1.66367 9.8123 1.91394Z" fill="black"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">정책 성격</div>
+        <div class="input-field">
+          <div class="dropdown-container">
+            <select class="ui fluid dropdown" name="policy_character_code" id="policy_character_code">
+              <% for(var i=0; i<code_data.policy_character_code.length; i++){%>
+                <%if(code_data.policy_character_code[i].code_detail == post.policy_character_code){%>
+                  <option value="<%=code_data.policy_character_code[i].code_detail%>" selected><%=code_data.policy_character_code[i].code_detail_name%></option>
+                <%}else{%>
+                  <option value="<%=code_data.policy_character_code[i].code_detail%>"><%=code_data.policy_character_code[i].code_detail_name%></option>
+                <%}%>
+              <%}%>
+            </select>
+            <div class="dropdown-icon-container"> <!-- Add a container around the icon -->
+              <svg class="dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.8123 1.91394L5.73399 5.99225C5.48372 6.24251 5.07796 6.24251 4.8277 5.99225L0.749389 1.91394C0.499124 1.66367 0.499124 1.25791 0.749389 1.00764C0.999655 0.75738 1.40542 0.75738 1.65568 1.00765L5.28084 4.63281L8.90601 1.00765C9.15628 0.75738 9.56204 0.75738 9.8123 1.00765C10.0626 1.25791 10.0626 1.66367 9.8123 1.91394Z" fill="black"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="label-field">정책 링크</div>
+        <div class="input-field">
+          <div class="input-container">
+            <input type="text" name="policy_link" id="policy_link" value="<%= post.policy_link %>">
+          </div>
+        </div>
+      </div>
+      <textarea name="content" id="editor"></textarea>
+      <br>
+      <div class="form-row">
+        <div class="nine wide field">
+          <input type="file" name="imgFile" id="policy_imgFile" accept="image/*">
+        </div>
+        <div class="four wide field">
+          <div class="ui checkbox">
+            <input type="checkbox" name="imgCheck" id="policy_imgCheck" checked>
+            <label>기존 이미지 사용</label>
+          </div>
+          <script>
+            $(function() {
+              // 파일 선택시 실행되는 이벤트 핸들러 등록
+              $("#policy_imgFile").change(function() {
+                console.log("파일 선택됨");
+                // 기존 이미지 사용 체크박스 해제
+                $("#policy_imgCheck").prop("checked", false);
+              });
+            });
+          </script>
+      </div>
+  </div>
+    <script>
+      // 3. CKEditor5를 생성할 textarea 지정
+      // db에 저장된 데이터를 가져와서 textarea에 넣는다.
+      ClassicEditor
+          .create( document.querySelector( '#editor' ), {
+            language: "ko",
+            simpleUpload: {
+              uploadUrl: '/upload/image',
+              withCredentials: true,
+            }
+            // plugins: [ 'Essentials', 'Paragraph', 'Bold', 'Italic', 'Link' ]
+          } )
+          // textarea에 db에 저장된 내용을 불러온다.
+          .then( editor => {
+              const content = "<%= content %>";
+              const parser = new DOMParser();
+              const decodedContent = parser.parseFromString(`<!doctype html><body>${content}`, 'text/html').body.textContent;
+              editor.setData( decodedContent );
+          } )
+          .catch( error => {
+              console.error( error );
+          } );
+      </script>
+      <br>
+        <!-- <div class="field">
+          <label>정책 파일</label>
+          <input type="file" name="file">
+        </div> -->
+        <div>
+          <div class="button-container">
+            <button class="register-button" type="submit" onclick="return btn()">
+              <div class="register-text">등록</div>
+            </div>
+            <button class="register-button" type="button" onclick="return cancel()">
+              <div class="register-text">취소</div>
+            </div>
+          </div>
+          <script>
+            function btn(){
+                if (!confirm("정책 등록 하시겠습니까??")) {
+                    alert("취소 하였습니다.");
+                    return false;
+                } else {
+                  if(document.getElementById("policy_name").value == ""){
+                    alert("이름을 입력해주세요.");
+                    // 마우스를 name에 놓는다.
+                    document.getElementById("policy_name").focus();
+                    return false;
+                  }
+                  if(document.getElementById("min_fund").value == ""){
+                    alert("지원금을 입력해주세요.");
+                    document.getElementById("min_fund").focus();
+                    return false;
+                  }
+                  // 지원금이 숫자가 아니면
+                  if(isNaN(document.getElementById("min_fund").value)){
+                    alert("지원금은 숫자만 입력해주세요.");
+                    document.getElementById("min_fund").focus();
+                    return false;
+                  }
+                  if(document.getElementById("max_fund").value == ""){
+                    alert("지원금을 입력해주세요.");
+                    document.getElementById("max_fund").focus();
+                    return false;
+                  }
+                  if(isNaN(document.getElementById("max_fund").value)){
+                    alert("지원금은 숫자만 입력해주세요.");
+                    document.getElementById("max_fund").focus();
+                    return false;
+                  }
+                  // if(document.getElementById("policy_imgFile").value == ""){
+                  //   // 이미지를 등록하지 않으면 기존 이미지를 사용
+                  //   alert("이미지를 등록하지 않으면 기존 이미지를 사용합니다.");
+                  //   return true;
+                  // }
+                  if(document.getElementById("policy_application_start_date").value == ""){
+                    alert("접수 시작일을 입력해주세요.");
+                    document.getElementById("policy_application_start_date").focus();
+                    return false;
+                  }
+                  if(document.getElementById("policy_application_end_date").value == ""){
+                    alert("접수 마감일을 입력해주세요.");
+                    document.getElementById("policy_application_end_date").focus();
+                    return false;
+                  }
+                  alert("등록되었습니다.");
+                  return true;
+              }
+            }
+            function cancel() {
+                if (!confirm("취소 하시겠습니까??")) {
+                    return false;
+                } else {
+                  location.href='/admin/policy/show';
+                }
+            }
+          </script>
+        </div>
+        <br><br>
+      </div>
+    </form>
+  </div>
+</section>
+</body>
+</html>

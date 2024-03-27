@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFEBE0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* 폰트 사용 */
+@font-face {
+  font-family: 'CookieRun-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.AdminLogin {
+  width: 250px; /* 좌우 여백을 넓힌 너비 */
+  height: 330px;
+  background: white;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  border: 0.50px #D9D9D9 solid;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#frm_login {
+  width: 100%; /* 아이디와 비밀번호 입력창 전체 너비 */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+label {
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%; /* 아이디와 비밀번호 입력창 전체 너비 */
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #D9D9D9;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 600;
+  padding: 5px 0;
+  outline: none;
+}
+
+.btn-primary {
+  background: #F57521;
+  color: white;
+  font-size: 20px;
+  font-family: Pretendard;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.TalkLogo {
+  width: 100%;
+  font-size: 30px;
+  font-family: Pretendard;
+  font-weight: 600;
+  color: #F57521;
+  font-family: CookieRun-Regular;
+  margin-bottom: 10px;
+}
+
+.apkDownload {
+  text-align: right;
+  margin-top: 20px;
+  width: 100%; /* APK 다운로드 버튼 전체 너비 */
+}
+
+.apkDownload a {
+  color: #585856;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 400;
+  text-decoration: underline;
+}

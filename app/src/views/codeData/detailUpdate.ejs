@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <link rel="stylesheet" href="/css/home//codeData/codeData.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body> 
+    <%- include('../layout.ejs', { pageTitle: '상세 코드 수정' }) %>
+<section>
+    <div>
+        <form action="/admin/codeData/detail/update/:<%=common_code%>:<%= detail_code%> %>" method="post">
+            <table class="codeData_table" id="code_detail_table">
+                <thead>
+                    <tr>
+                        <!-- <th>공통 코드</th> -->
+                        <th>코드</th>
+                        <th>코드명</th>
+                        <th>코드설명</th>
+                        <th>사용여부</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%=code_data[0].code_detail%></td>
+                        <td><input type="text" name="code_detail_name" value="<%=code_data[0].code_detail_name%>"></td>
+                        <td><input type="text" name="code_detail_desc" value="<%=code_data[0].code_detail_desc%>"></td>
+                        <td>
+                            <!-- yn 선택 필드 -->
+                            <select name="code_detail_use_yn">
+                                <option value="Y" <% if(code_data[0].code_detail_use_yn == 'Y'){ %> selected <% } %>>Y</option>
+                                <option value="N" <% if(code_data[0].code_detail_use_yn == 'N'){ %> selected <% } %>>N</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button id="code_detail_regist_btn" class="ui button" onclick="return btn()">수정</button>
+            <script>
+                function btn(){
+                    if(confirm("수정하시겠습니까?")){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
+            </script>
+        </form>
+    </div>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chat-container {
+            width: 400px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .chat-log {
+            height: 300px;
+            overflow: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .user-message, .bot-message {
+            margin-bottom: 10px;
+        }
+        .user-message {
+            color: blue;
+        }
+        .bot-message {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-log" id="chatLog">
+            <div class="bot-message">안녕하세요!</div>
+        </div>
+        <form id="chatForm">
+            <input type="text" id="userInput" placeholder="메시지를 입력하세요">
+            <button type="submit">전송</button>
+        </form>
+    </div>
+
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const chatLog = document.getElementById('chatLog');
+
+        chatForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const userInput = document.getElementById('userInput');
+            const userMessage = userInput.value;
+            if (userMessage.trim() === '') return;
+
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'user-message';
+            userMessageDiv.textContent = userMessage;
+            chatLog.appendChild(userMessageDiv);
+
+            userInput.value = '';
+
+            // 실제 서버와 통신하여 응답을 받아옵니다.
+            const serverResponse = await fetch('/chatbot/get-response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: userMessage })
+            }).then(response => response.json());
+
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.className = 'bot-message';
+            botMessageDiv.textContent = serverResponse.response; // 서버 응답에서 원하는 데이터를 표시
+            chatLog.appendChild(botMessageDiv);
+
+            chatLog.scrollTop = chatLog.scrollHeight;
+        });
+    </script>
+</body>
+</html>

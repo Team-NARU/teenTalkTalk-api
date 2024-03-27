@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <link rel="stylesheet" href="/css/home/policy/show.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: '정책 정보 관리' }) %>
+<section>
+      <div>
+        <div class="register-btn" id="policy_reg_btn" onclick="location.href='/admin/policy/upload'">
+          <div class="register-text">등록</div>
+        </div>
+        <div class="table-container">
+          <table id="policy_table">
+              <thead>
+                  <tr>
+                      <th>정책 번호</th>
+                      <th>정책 이름</th>
+                      <th>정책 대상</th>
+                      <th>접수 시작일</th>
+                      <th>접수 마감일</th>
+                      <th>수정</th>
+                      <th>삭제</th>
+                  </tr>
+              </thead>
+              <tbody>
+              <% if (posts.length === 0) { %>
+                <tr>
+                  <td colspan="10">조회된 데이터가 없습니다.</td>
+                </tr>
+              <% } else { %>
+                <% for(var i=0; i< posts.length; i++){ %>
+                  <tr>
+                    <td><%= i+1 %></td>
+                    <td><%= posts[i].policy_name %></td>
+                    <td><%= codeName(posts[i].policy_target_code,code_data).policy_target_code_name %></td>
+                    <td><%= `${posts[i].application_start_date.getFullYear()}` + `-`+ `${posts[i].application_start_date.getMonth()+1}` + `-`+ `${posts[i].application_start_date.getDate()}`%></td>
+                    <td><%= `${posts[i].application_end_date.getFullYear()}` + `-`+ `${posts[i].application_end_date.getMonth()+1}` + `-`+ `${posts[i].application_end_date.getDate()}`%></td>
+                    <td><a href="/admin/policy/update/<%=posts[i].board_idx %>">수정</a></td>
+                    <td><a href="/admin/policy/delete/<%= posts[i].board_idx %>" onclick="return delPol()">삭제</a></td>
+                    <script>
+                      function delPol(){
+                        if(confirm("정말 삭제하시겠습니까?")){
+                          return true;
+                        }else{
+                          return false;
+                        }
+                      }
+                    </script>
+                  </tr>
+                <% } %>
+              <% } %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+    
+    <button class="ui button" id="policy_csv" onclick="location.href='/admin/policy/csv'">다운로드</button>
+    <!-- 정책 임의 생성(테스트 용도) -->
+    <!-- <button class="ui button" id="policy_reg_test" onclick="location.href='/admin/policy/regTest'">테스트</button> -->
+    <!-- <button class="ui button" id="add_users" onclick="regiAll()">일괄 등록</button> -->
+    <div id="policy_paging">
+      <% if (totalPage > 1) { %> <!-- 전체 페이지가 1페이지 이상일 경우에만 페이징 표시 -->
+      <div class="ui pagination menu">        
+          <a class="icon item" href="/admin/policy/show/?page=<%=page-1 %>"></a>
+        <% var startPage = Math.max(page - 1, 1); %>
+        <% var endPage = Math.min(page + 1, totalPage); %>
+        <% if (startPage === 1) { %>
+          <% endPage = Math.min(3, totalPage); %>
+        <% } %>
+        <% if (endPage === totalPage) { %>
+          <% startPage = Math.max(endPage - 2, 1); %>
+        <% } %>
+        <% for (var i = startPage; i <= endPage; i++) { %>
+          <% if (i === page) { %>
+            <a class="active item"><%=i %></a>
+          <% } else { %>
+            <a class="item" href="/admin/policy/show/?page=<%=i %>"><%=i %></a>
+          <% } %>
+        <% } %>
+          <a class="icon item" href="/admin/policy/show/?page=<%=page+1 %>"></a>
+      </div>
+      <% } %>
+    </div>
+</section>

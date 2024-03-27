@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <link rel="stylesheet" href="/css/home/codeData/codeData.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>   
+    <%- include('../layout.ejs', { pageTitle: '무화과 이벤트' }) %>
+<section>
+    <div>
+        <table class="codeData_table" id="code_detail_table">
+            <thead>
+                <tr>
+                    <!-- <th>공통 코드</th> -->
+                    <th>EID</th>
+                    <th>이벤트명</th>
+                    <th>지급량</th>
+                    <th>이벤트 시작일</th>
+                    <th>이벤트 종료일</th>
+                    <th>수정</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<code_data.length ;i++){ %>
+                    <tr>
+                        <!-- <td><%=code_data[i].code%></td> -->
+                        <td><%=code_data[i].eid%></td>
+                        <td><%=code_data[i].event_name%> </td>
+                        <td><%=code_data[i].fig_payment%> </td>
+                        <td><%= `${code_data[i].event_start_date.getFullYear()}` + `-`+ `${code_data[i].event_start_date.getMonth()+1}` + `-`+ `${code_data[i].event_start_date.getDate()}`%></td>
+                        <td><%= `${code_data[i].event_end_date.getFullYear()}` + `-`+ `${code_data[i].event_end_date.getMonth()+1}` + `-`+ `${code_data[i].event_end_date.getDate()}`%></td>
+                        <td><a href="/admin/codeData/eventDetail/update/<%=code_data[i].eid %>">수정</a></td>
+                    </tr> 
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</section>
+</div>
+</body>
+</html>

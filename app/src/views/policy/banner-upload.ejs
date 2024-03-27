@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/policy/banner-upload.css">
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>
+    <%- include('../layout.ejs', { pageTitle: '배너 등록' }) %>
+<section>
+    <form action="/admin/policy/banner/upload" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+          <div class="label-field">제목</div>
+          <div class="input-field">
+            <div class="input-container">
+                <input type="text" name="name" id="banner_id" placeholder="제목을 입력하세요">
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="label-field">링크</div>
+          <div class="input-field">
+            <div class="input-container">
+                <input type="text" name="link" id="banner_link" placeholder="링크를 입력하세요">
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="label-field">사진</div>
+          <div class="file-container">
+            <input type="file" name="imgFile" id="imgFile" accept="image/*">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="register-button" type="submit" onclick="return btn()">
+            <div class="register-text">등록</div>
+          </div>
+          <button class="register-button" type="button" onclick="return cancel()">
+            <div class="register-text">취소</div>
+          </div>
+        </div>
+        <script>
+            function btn() {
+                if(confirm("등록하시겠습니까?")) {
+                    if(document.getElementById("banner_id").value == "") {
+                        alert("제목을 입력해주세요.");
+                        return false;
+                    }
+                    if(document.getElementById("banner_imgFile").value == "") {
+                        alert("이미지를 등록해주세요.");
+                        return false;
+                    }
+                    if(document.getElementById("banner_link").value == "") {
+                        alert("링크를 입력해주세요.");
+                        return false;
+                    }
+                    return true;
+                } else {
+                    alert("취소되었습니다.");
+                    return false;
+                }
+            }
+            function cancel() {
+                if (!confirm("입력 데이터를 취소하시겠습니까?")) {
+                return false;
+                } else {
+                location.href = '/admin/policy/banner';
+                }
+            }
+        </script>
+    </form>
+</section>
+</body>
+</html>

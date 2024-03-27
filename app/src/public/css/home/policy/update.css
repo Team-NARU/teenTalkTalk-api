@@ -1,0 +1,157 @@
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+ }
+
+.form-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .label-field {
+    width: 140px;
+    height: 50px;
+    background: rgba(240, 241, 247, 0.50);
+    border: 0.50px #C9C9C9 solid;
+    border-left: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-family: Pretendard;
+    font-weight: 600;
+  }
+  
+  .input-field {
+    flex: 1;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.50);
+    border: 0.50px #C9C9C9 solid;
+    border-right: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .input-container {
+    width: 170px;
+    height: 34px;
+    background: white;
+    border-radius: 8px;
+    border: 0.50px #C9C9C9 solid;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-left : 10px;
+    margin-top: 8px;
+  }
+  
+  .input-container input {
+    width: 200px;
+    height: 34px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: Pretendard;
+    font-weight: 500;
+    color: #000; /* Change the color to black */
+  }
+  .input-container input[type="text"] {
+    padding-left: 20px; /* 왼쪽 패딩 설정 */
+  }
+  .input-container input::placeholder {
+    color: #000; /* Change the color to black */
+  }
+  /* '접수 시작'과 '접수 마감' input 요소 스타일 */
+.input-container input[type="date"] {
+  width: 110px; /* 너비 조정 */
+  height: 34px;
+  background: white;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 500;
+  color: #000;
+}
+
+.file-container {
+  width: 100px;
+  padding-left: 15px;
+}
+/* 등록 버튼 */
+.register-button {
+    width: 80px;
+    height: 30px;
+    background: #F57521;
+    border-radius: 15px;;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .register-button:hover {
+    background-color: #E05D1F; /* Change background color on hover */
+  }
+  .register-text {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-family: Pretendard;
+    font-weight: 600;
+    word-wrap: break-word;
+  }
+  .button-container {
+    display: inline-flex;
+    margin-top: 10px;
+  }
+
+  
+/* 드롭 다운 */
+  .dropdown-container {
+    width: 150px;
+    height: 34px;
+    background: white;
+    border-radius: 8px;
+    border: 0.50px #C9C9C9 solid;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-top: 8px;
+    position: relative;
+  }
+  
+  .ui.fluid.dropdown {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: Pretendard;
+    font-weight: 500;
+    color: #000;
+    appearance: none;
+  }
+  .dropdown-icon-container {
+    position: absolute;
+    top: 50%;
+    right: 8px; /* Adjust this value to move the icon away from the right edge */
+    transform: translateY(-50%);
+  }
+  
+
+/* 아이콘 스타일 */
+.dropdown-icon {
+  font-size: 14px;
+  color: #000;
+  margin-left: 10px; /* 왼쪽 여백 조정 */
+  display: flex;
+  align-items: center;
+}
+
+/* 드롭다운 메뉴 열었을 때의 아이콘 스타일 */
+.dropdown-container.open .dropdown-icon {
+  transform: rotate(180deg);
+}  

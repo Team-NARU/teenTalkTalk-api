@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="sidebar">
+    <div class="title-container">
+      <a href="/admin/dataif"><div class="title">관리자 페이지</div></a>
+      <a href="/admin/dataif"><div class="title-bar">청소년 톡talk</div></a>
+    </div>
+    <br>
+    <!-- Menu items -->
+    <div class="category-item" onclick="toggleMenu('member')">
+      <div class="category-title">회원 관리</div>
+      <div class="arrow-button"></div>
+    </div>
+    <div class="menu-items-container" id="member">
+      <a href="/admin/dataif"><div class="menu-item">회원 정보 관리</div></a>
+      <a href="/admin/dataif/terms"><div class="menu-item">회원 가입 설정</div></a>
+      <a href="/admin/event"><div class="menu-item">이벤트 참여자</div></a>
+      <br>
+    </div>
+    
+    <div class="category-item" onclick="toggleMenu('policy')">
+      <div class="category-title">정책 관리</div>
+      <div class="arrow-button"></div>
+    </div>
+    <div class="menu-items-container" id="policy">
+      <a href="/admin/policy/show"><div class="menu-item">정책 정보 관리</div></a>
+      <a href="/admin/policy/banner"><div class="menu-item">배너 관리</div></a>
+      <br>
+    </div>
+    
+    <div class="category-item" onclick="toggleMenu('operation')">
+      <div class="category-title">운영 관리</div>
+      <div class="arrow-button"></div>
+    </div>
+    <div class="menu-items-container" id="operation">
+      <a href="/admin/codeData/show"><div class="menu-item">코드 정보 관리</div></a>
+    </div>
+    
+    
+
+    <script>
+      function toggleMenu(id) {
+        const container = document.getElementById(id);
+        container.classList.toggle("active");
+    
+        const arrowButton = container.previousElementSibling.querySelector(".arrow-button");
+        arrowButton.classList.toggle("arrow-down");
+      }
+    </script>
+
+    <!-- Logout button -->
+    <div class="logout-btn">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.4082 8.57468C14.1733 8.34095 13.7934 8.3419 13.5597 8.5768C13.3259 8.81169 13.3269 9.19159 13.5618 9.42532L14.4082 8.57468ZM16.5768 12.4253C16.8117 12.6591 17.1916 12.6581 17.4253 12.4232C17.6591 12.1883 17.6581 11.8084 17.4232 11.5747L16.5768 12.4253ZM17.4232 12.4253C17.6581 12.1916 17.6591 11.8117 17.4253 11.5768C17.1916 11.3419 16.8117 11.3409 16.5768 11.5747L17.4232 12.4253ZM13.5618 14.5747C13.3269 14.8084 13.3259 15.1883 13.5597 15.4232C13.7934 15.6581 14.1733 15.6591 14.4082 15.4253L13.5618 14.5747ZM17 12.6C17.3314 12.6 17.6 12.3314 17.6 12C17.6 11.6686 17.3314 11.4 17 11.4V12.6ZM3 11.4C2.66863 11.4 2.4 11.6686 2.4 12C2.4 12.3314 2.66863 12.6 3 12.6V11.4ZM13.5618 9.42532L16.5768 12.4253L17.4232 11.5747L14.4082 8.57468L13.5618 9.42532ZM16.5768 11.5747L13.5618 14.5747L14.4082 15.4253L17.4232 12.4253L16.5768 11.5747ZM17 11.4H3V12.6H17V11.4Z" fill="#585856"/>
+        <path d="M9 15C9 17.2091 10.7909 19 13 19H17C19.2091 19 21 17.2091 21 15V9C21 6.79086 19.2091 5 17 5H13C10.7909 5 9 6.79086 9 9" stroke="#585856" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14.4082 8.57468C14.1733 8.34095 13.7934 8.3419 13.5597 8.5768C13.3259 8.81169 13.3269 9.19159 13.5618 9.42532L14.4082 8.57468ZM16.5768 12.4253C16.8117 12.6591 17.1916 12.6581 17.4253 12.4232C17.6591 12.1883 17.6581 11.8084 17.4232 11.5747L16.5768 12.4253ZM17.4232 12.4253C17.6581 12.1916 17.6591 11.8117 17.4253 11.5768C17.1916 11.3419 16.8117 11.3409 16.5768 11.5747L17.4232 12.4253ZM13.5618 14.5747C13.3269 14.8084 13.3259 15.1883 13.5597 15.4232C13.7934 15.6581 14.1733 15.6591 14.4082 15.4253L13.5618 14.5747ZM17 12.6C17.3314 12.6 17.6 12.3314 17.6 12C17.6 11.6686 17.3314 11.4 17 11.4V12.6ZM3 11.4C2.66863 11.4 2.4 11.6686 2.4 12C2.4 12.3314 2.66863 12.6 3 12.6V11.4ZM13.5618 9.42532L16.5768 12.4253L17.4232 11.5747L14.4082 8.57468L13.5618 9.42532ZM16.5768 11.5747L13.5618 14.5747L14.4082 15.4253L17.4232 12.4253L16.5768 11.5747ZM17 11.4H3V12.6H17V11.4Z" fill="#585856"/>
+        <path d="M9 15C9 17.2091 10.7909 19 13 19H17C19.2091 19 21 17.2091 21 15V9C21 6.79086 19.2091 5 17 5H13C10.7909 5 9 6.79086 9 9" stroke="#585856" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        
+      <a href="/admin/auth/logout" onclick="return logout()"><div id='로그아웃' class='common-style 로그아웃'>관리자 페이지 로그아웃</div></a>
+      <script>
+        function logout() {
+          if (confirm('로그아웃 하시겠습니까?')) {
+            return true;
+          } else {
+            return false;
+          }
+        };
+      </script>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-title"><%= pageTitle %></div>
+    <div class="white-content"> 

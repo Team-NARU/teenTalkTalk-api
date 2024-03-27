@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/dataif/figManage.css">
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: '무화과 지급 내역' }) %>
+<section>
+    <div>
+      <!-- <div class="pagename"><%=userid %></div> -->
+      <!-- <table id="fig_payment_table">
+        <tr>
+          <th>번호</th>
+          <th>상품명</th>
+          <th>비용</th>
+          <th>상품 설명</th>
+          <th>사용 일시</th>
+        </tr>
+        <% for(var i=0; i<figUsage.length; i++){ %>
+        <tr>
+          <td><%= figUsage[i].fig_usage_no %></td>
+          <td><%= figUsage[i].product_name %></td>
+          <td><%= figUsage[i].product_cost %></td>
+          <td><%= figUsage[i].product_desc %></td>
+          <td><%= `${figUsage[i].fig_used_date.getFullYear()}` + `-`+ `${figUsage[i].fig_used_date.getMonth()+1}` + `-`+ `${figUsage[i].fig_used_date.getDate()}`%></td>
+        </tr>
+        <% } %>
+      </table>
+      <br><br>
+      <div class="pagename">이벤트 참여 내역</div> -->
+      <table id="event_part_table">
+        <tr>
+          <th>번호</th>
+          <th>이벤트명</th>
+          <th>비용</th>
+          <th>획들 일시</th>
+        </tr>
+        <% for(var i=0; i<eventPart.length; i++){ %>
+        <tr>
+          <td><%= eventPart[i].event_part_no %></td>
+          <td><%= eventPart[i].event_name %></td>
+          <td><%= eventPart[i].fig_payment %></td>
+          <td><%= `${eventPart[i].acquired_time.getFullYear()}` + `-`+ `${eventPart[i].acquired_time.getMonth()+1}` + `-`+ `${eventPart[i].acquired_time.getDate()}`%></td>
+        </tr>
+        <% } %>
+      </table>
+      <br><br>
+    </div>
+</section>
+</div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+/* 스타일 설정 */
+/* 드롭다운 스타일 */
+.dropdown-container {
+  width: 100px; /* 크기 수정 */
+  height: 25px; /* 크기 수정 */
+  padding: 6px 12px; /* 패딩 수정 */
+  background: white;
+  border: 0.5px solid #C9C9C9;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-title {
+  color: #585856;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+.arrow-icon {
+  width: 5.36px;
+  height: 9.44px;
+  transform: rotate(90deg);
+  transform-origin: 0 0;
+  background: black;
+}
+
+/* 입력 창 스타일 */
+.input-container {
+  width: 140px; /* 크기 수정 */
+  height: 25px; /* 크기 수정 */
+  margin-left: 10px;
+  padding: 6px 12px; /* 패딩 수정 */
+  background: white;
+  border: 0.5px solid #C9C9C9;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-text {
+  color: #585856;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+
+#search {
+  width: 150px; /* 크기 수정 */
+  height: 25px; /* 크기 수정 */
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 500;
+}
+
+/* 검색 버튼 스타일 */
+.search-btn {
+  width: 60px; /* 크기 수정 */
+  height: 25px; /* 크기 수정 */
+  margin-left: 5px;
+  padding: 6px 12px; /* 패딩 수정 */
+  background: #8E8F92;
+  border-radius: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+  cursor: pointer;
+  display: inline-flex; /* 한 줄에 나타내기 위해 inline-flex 사용 */
+  transition: background-color 0.3s ease; /* hover 효과 설정 */
+}
+.search-btn:hover {
+  background: #a9a9a9; /* hover 배경 색상 변경 */
+}
+
+.search-icon-container {
+  width: 14px; /* 크기 수정 */
+  height: 14px; /* 크기 수정 */
+  position: relative;
+}
+
+.search-icon {
+  width: 8.22px;
+  height: 0.75px;
+  left: 0px;
+  top: 5.5px; /* 위치 수정 */
+  position: absolute;
+  background: white;
+}
+
+.search-icon-bar2 {
+  width: 5.17px;
+  height: 7.38px;
+  left: 4.17px;
+  top: 1.96px;
+  position: absolute;
+  background: url("https://via.placeholder.com/5x7");
+}
+
+.search-text {
+  text-align: center;
+  color: white;
+  font-family: Pretendard;
+  font-weight: 600;
+  font-size: 14px; /* 버튼 텍스트 크기 조정 */
+  padding-top: 12px; /* 버튼 내부 상단 여백 조정 */
+  padding-bottom: 12px; /* 버튼 내부 하단 여백 조정 */
+  word-wrap: break-word;
+}
+
+/* 다운로드 버튼 스타일 */
+.download-btn {
+  width: 75px; /* 크기 수정 */
+  padding: 6px 12px; /* 패딩 수정 */
+  background: #8E8F92;
+  margin-left: 15px;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px; /* 변경된 높이 */
+  display: inline-flex; /* 한 줄에 나타내기 위해 inline-flex 사용 */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* hover 효과 설정 */
+}
+.download-text {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  font-family: Pretendard;
+  font-weight: 600;
+  word-wrap: break-word;
+  padding-top: 12px; /* 버튼 내부 상단 여백 조정 */
+  padding-bottom: 12px; /* 버튼 내부 하단 여백 조정 */
+}
+#download-btn:hover {
+  background: #b0b0b0; /* hover 배경 색상 변경 */
+}
+
+.download-icon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.download-icon img {
+  width: 9.33px;
+  height: 9.33px;
+  left: 3.33px;
+  top: 3.33px;
+  position: absolute;
+  border: 0.75px white solid;
+}
+/* 등록 버튼 스타일 */
+.register-btn {
+  width: 50px; /* 크기 수정 */
+  padding: 6px 12px; /* 패딩 수정 */
+  background: #F57521;
+  margin-left: 610px; /* 버튼 간격 조정 */
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px; /* 변경된 높이 */
+  display: inline-flex; /* 한 줄에 나타내기 위해 inline-flex 사용 */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* hover 효과 설정 */
+}
+
+.register-text {
+  text-align: center;
+  color: white;
+  font-family: Pretendard;
+  font-weight: 600;
+  word-wrap: break-word;
+  font-size: 15px; /* 버튼 텍스트 크기 조정 */
+  padding-top: 12px; /* 버튼 내부 상단 여백 조정 */
+  padding-bottom: 12px; /* 버튼 내부 하단 여백 조정 */
+}
+.register-btn:hover {
+  background: #F79862;
+}
+/* 테이블 스타일 */
+#mem_table {
+  width: 100%;
+  border-collapse: collapse; /* 테두리 겹침 방지 */
+  margin-top: 10px; /* 테이블과 다른 요소들 간격 조정 */
+  text-align: center; /* 셀 내용 중앙 정렬 */
+}
+
+#mem_table th, #mem_table td {
+  border-bottom: 1px solid #C9C9C9; /* 각 행을 구분하는 선 */
+  padding: 8px; /* 셀 안의 내용과 셀 테두리 간격 설정 */
+}
+
+#mem_table th {
+  background-color: rgba(240, 241, 247, 0.50); /* 테이블 제목 배경색 설정 */
+}
+
+#mem_table td {
+  background-color: white; /* 테이블 셀 배경색 설정 */
+}
+
+
+/* 페이징 버튼 스타일 */
+.ui.pagination.menu {
+  margin-top: 20px; /* 페이징과 테이블 간격 조정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui.pagination.menu a {
+  width: 21px;
+  height: 21px;
+  margin: 0 5px; /* 각 버튼 사이의 간격 조정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #CBCBCB;
+  text-decoration: none;
+  color: #787878;
+  font-size: 15px;
+  font-family: Pretendard;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.ui.pagination.menu a.active {
+  background: #F57521;
+  color: white;
+  font-weight: 600;
+}
+
+.ui.pagination.menu .left-arrow {
+  transform: rotate(-180deg);
+  transform-origin: 0 0;
+}
+
+.ui.pagination.menu .right-arrow {
+  transform: rotate(0deg);
+  transform-origin: 0 0;
+}
+
+
+/* 이전 버튼 아이콘 스타일 */
+.icon.item.left-arrow .fas.fa-chevron-left {
+  font-size: 1.3rem; /* 아이콘 크기 조절 */
+  color: #A6A6A6; /* 연한 회색 색상 설정 */
+  transform: rotate(-180deg); /* 아이콘을 역방향으로 회전하여 < 모양으로 보이도록 설정 */
+  background: none; /* 배경 제거 */
+}
+
+/* 다음 버튼 아이콘 스타일 */
+.icon.item.right-arrow .fas.fa-chevron-right {
+  font-size: 1.3rem; /* 아이콘 크기 조절 */
+  color: #A6A6A6; /* 연한 회색 색상 설정 */
+  background: none; /* 배경 제거 */
+}
+
+/* 페이징 버튼 숫자 스타일 */
+.ui.pagination.menu a.item {
+  color: #A6A6A6; /* 연한 회색 색상 설정 */
+  font-family: Pretendard; /* 원하는 폰트 설정 */
+  font-weight: 400; /* 폰트 두께 설정 */
+  word-wrap: break-word;
+  margin: 0 5px; /* 숫자 간격 조절 */
+  cursor: pointer;
+  background: none; /* 배경 제거 */
+}
+
+/* 선택된 페이지 숫자 스타일 */
+.ui.pagination.menu a.active.item {
+  color: #F57521; /* 선택된 숫자 색상 설정 */
+  font-weight: 600; /* 선택된 숫자 폰트 두께 설정 */
+  background: none; /* 배경 제거 */
+}
+
+
+/* 드롭다운 메뉴 숨김 스타일 */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #C9C9C9;
+  border-radius: 8px;
+  width: 100px;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* 드롭다운 버튼 클릭 시 나타나는 스타일 */
+.dropdown-container.active .dropdown-menu {
+  display: block;
+}

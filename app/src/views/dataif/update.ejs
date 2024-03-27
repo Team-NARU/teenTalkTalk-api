@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/dataif/update.css">
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: '회원 수정' }) %>
+<section>
+    <div>
+        <div>
+          <form action="/admin/dataif/update/<%=post.userid %>" method="post" name="frm_signup" id="frm_signup">
+            <div class="form-row">
+              <div class="label-field">이름</div>
+              <div class="input-field">
+                <div class="input-container">
+                  <input type="text" name="name" id="update_name" value="<%= post.user_name %>">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">아이디</div>
+              <div class="input-field">
+                <div class="input-container">
+                  <%= post.userid %>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">비밀번호</div>
+              <div class="input-field">
+                <div class="input-container">
+                  <input name="password" id="update_password" type="password" placeholder="비밀번호를 입력해주세요">
+                </div>
+                <div class="input-container">
+                  <input name="password2" id="update_password2" type="password" placeholder="비밀번호 확인"">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">권한구분</div>
+              <div class="input-field">
+                <div class="dropdown-container">
+                  <select class="ui fluid dropdown" name="user_role" id="user_role">
+                    <option value="0" <% if (post.user_role === '0') { %>selected<% } %>>사용자</option>
+                    <option value="1" <% if (post.user_role === '1') { %>selected<% } %>>최고관리자</option>
+                    <option value="2" <% if (post.user_role === '2') { %>selected<% } %>>부관리자</option>
+                    <option value="3" <% if (post.user_role === '3') { %>selected<% } %>>정책관리자</option>
+                  </select>
+                  <div class="dropdown-icon">&#9660;</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">회원구분</div>
+              <div class="input-field">
+                <div class="dropdown-container">
+                  <select class="ui fluid dropdown" name="user_type" id="user_type">
+                    <%for(var i=0; i<code_data.user_type.length; i++){%>
+                      <%if(code_data.user_type[i].code_detail == post.user_type){%>
+                        <option value="<%=code_data.user_type[i].code_detail%>" selected><%=code_data.user_type[i].code_detail_name%></option>
+                      <%}else{%>
+                        <option value="<%=code_data.user_type[i].code_detail%>"><%=code_data.user_type[i].code_detail_name%></option>
+                      <%}%>
+                    <%}%>
+                  </select>
+                  <div class="dropdown-icon">&#9660;</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">연령대</div>
+              <div class="input-field">
+                <div class="dropdown-container">
+                  <select class="ui fluid dropdown" name="parentsAge_code" id="parentsAge_code">
+                    <%for(var i=0; i<code_data.parentsAge_code.length; i++){%>
+                      <%if(code_data.parentsAge_code[i].code_detail == post.parentsAge_code){%>
+                        <option value="<%=code_data.parentsAge_code[i].code_detail%>" selected><%=code_data.parentsAge_code[i].code_detail_name%></option>
+                      <%}else{%>
+                        <option value="<%=code_data.parentsAge_code[i].code_detail%>"><%=code_data.parentsAge_code[i].code_detail_name%></option>
+                      <%}%>
+                    <%}%>
+                  </select>
+                  <div class="dropdown-icon">&#9660;</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">학교</div>
+              <div class="input-field">
+                <div class="dropdown-container">
+                  <select class="ui fluid dropdown" name="youthAge_code" id="youthAge_code">
+                    <%for(var i=0; i<code_data.youthAge_code.length; i++){%>
+                      <%if(code_data.youthAge_code[i].code_detail == post.youthAge_code){%>
+                        <option value="<%=code_data.youthAge_code[i].code_detail%>" selected><%=code_data.youthAge_code[i].code_detail_name%></option>
+                      <%}else{%>
+                        <option value="<%=code_data.youthAge_code[i].code_detail%>"><%=code_data.youthAge_code[i].code_detail_name%></option>
+                      <%}%>
+                    <%}%>
+                  </select>
+                  <div class="dropdown-icon">&#9660;</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">거주지</div>
+              <div class="input-field">
+                <div class="dropdown-container">
+                  <select class="ui fluid dropdown" name="emd_class_code" id="emd_class_code">
+                    <%for(var i=0; i<code_data.emd_class_code.length; i++){%>
+                      <%if(code_data.emd_class_code[i].code_detail == post.emd_class_code){%>
+                        <option value="<%=code_data.emd_class_code[i].code_detail%>" selected><%=code_data.emd_class_code[i].code_detail_name%></option>
+                      <%}else{%>
+                        <option value="<%=code_data.emd_class_code[i].code_detail%>"><%=code_data.emd_class_code[i].code_detail_name%></option>
+                      <%}%>
+                    <%}%>
+                  </select>
+                    <div class="dropdown-icon">&#9660;</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="label-field">성별</div>
+              <div class="input-field">
+                <div class="dropdown-container">
+                  <select class="ui fluid dropdown" name="sex_class_code" id="sex_class_code">
+                    <option value="0" <% if (post.sex_class_code === '0') { %>selected<% } %>>남자</option>
+                    <option value="1" <% if (post.sex_class_code === '1') { %>selected<% } %>>여자</option>
+                    <option value="2" <% if (post.sex_class_code === '2') { %>selected<% } %>>선택 안함</option>
+                  </select>
+                    <div class="dropdown-icon">&#9660;</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="label-field">이메일</div>
+              <div class="input-field">
+                <div class="input-container">
+                  <input type="text" name="user_email" id="update_email" value="<%= post.user_email %>">
+                </div>
+              </div>
+            </div>
+              <script>
+                function reset_password() {
+                  if (!confirm("비밀번호를 초기화 하시겠습니까??")) {
+                    alert("취소 하였습니다.");
+                    return false;
+                  } else {
+                    document.getElementById("update_password").value = "1234";
+                  }
+                }
+              </script>
+            </div>
+            <a href="/admin/dataif/resetPW/<%= post.userid %>" onclick="reset_password()">비밀번호 초기화(test)</a>
+            </div>
+                  <br>
+                <div>
+                    <button class="ui button" type="submit" onclick="btn()">수정</button>
+                    <script>
+                      function btn() {
+                          if (!confirm("수정 하시겠습니까??")) {
+                              return false;
+                          } else {
+                            if(document.getElementById("update_name").value == ""){
+                              alert("이름을 입력해주세요.");
+                              return false;
+                            }
+                            else if(document.getElementById("update_password").value == ""){
+                              alert("비밀번호를 입력해주세요.");
+                              return false;
+                            }
+                            else if(document.getElementById("update_password2").value == ""){
+                              alert("비밀번호를 확인을 입력해주세요.");
+                              return false;
+                            }
+                            else if(document.getElementById("update_password").value != document.getElementById("update_password2").value){
+                              alert("비밀번호가 일치하지 않습니다.");
+                              return false;
+                            }
+                            else if(document.getElementById("update_email").value == ""){
+                              alert("이메일을 입력해주세요.");
+                              return false;
+                            }
+                            // if(document.getElementById("user_email").value.indexOf("@") == -1){
+                            //   alert("이메일 형식이 아닙니다.");
+                            //   return false;
+                            // }
+                            else{alert($("#update_name").value+"님 회원 수정 되었습니다.");
+                            return true;}
+                          }
+                      }
+                    </script>
+                    <button class="ui button" type="button" onclick="cancel()">취소</button>
+                    <script>
+                      function cancel() {
+                          if (!confirm("취소 하시겠습니까??")) {
+                              return false;
+                          } else {
+                            location.href='/admin/dataif';
+                          }
+                      }
+                    </script>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</div>
+</body>
+
+</html>

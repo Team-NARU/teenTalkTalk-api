@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/css/home/dataif/memPage.css">
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <link rel="stylesheet" href="/css/home/dataif/memPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: '회원 가입 설정' }) %>
+  <form action="/admin/dataif/" method="search" class="ui form">
+    <div class="fields">
+      <!-- 드롭다운 -->
+      <div class="dropdown-container">
+        <div class="dropdown-button">아이디</div>
+        <div class="dropdown-menu">
+          <!-- 드롭다운 메뉴 아이템들을 추가 -->
+          <div class="dropdown-item">아이디</div>
+          <!-- 추가 메뉴 아이템들 -->
+        </div>
+      </div>
+      <script>
+        // 클릭 이벤트를 처리하는 함수
+        function toggleDropdown() {
+          var dropdownMenu = document.querySelector(".dropdown-menu");
+          dropdownMenu.classList.toggle("active");
+        }
+      
+        // 클릭 이벤트 연결
+        var dropdownButton = document.querySelector(".dropdown-button");
+        dropdownButton.addEventListener("click", toggleDropdown);
+      </script>      
+      <!-- 입력 창 -->
+      <div class="input-container">
+        <input type="search" name="search" id="search" placeholder="검색어를 입력하세요">
+      </div>
+      <!-- 검색 버튼 -->
+      <div class="search-btn" id="search_btn" type="submit" onclick="return validateSearch()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.53675 7.97579C1.96018 7.38707 1.56913 6.64204 1.41208 5.83312C1.25374 5.02194 1.33505 4.18219 1.64608 3.41646C1.95446 2.65502 2.48094 2.00166 3.15941 1.53846C4.53598 0.598286 6.34818 0.598286 7.72475 1.53846C8.40322 2.00166 8.9297 2.65502 9.23808 3.41646C9.54911 4.18219 9.63042 5.02194 9.47208 5.83312C9.31503 6.64204 8.92398 7.38707 8.34741 7.97579C7.58385 8.75935 6.53616 9.20128 5.44208 9.20128C4.348 9.20128 3.30031 8.75935 2.53675 7.97579V7.97579Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.42048 2.0533C5.00858 2.09694 4.71004 2.46624 4.75369 2.87815C4.79733 3.29006 5.16663 3.58859 5.57854 3.54495L5.42048 2.0533ZM6.45085 4.05884C6.61233 4.44028 7.05246 4.61859 7.4339 4.45711C7.81534 4.29563 7.99365 3.85551 7.83217 3.47407L6.45085 4.05884ZM8.93804 7.38099C8.64489 7.08835 8.17001 7.08878 7.87738 7.38193C7.58474 7.67508 7.58517 8.14995 7.87832 8.44259L8.93804 7.38099ZM10.137 10.6973C10.4301 10.9899 10.905 10.9895 11.1976 10.6963C11.4903 10.4032 11.4899 9.92829 11.1967 9.63565L10.137 10.6973ZM5.57854 3.54495C5.95074 3.50551 6.30494 3.71417 6.45085 4.05884L7.83217 3.47407C7.42876 2.52115 6.44951 1.94426 5.42048 2.0533L5.57854 3.54495ZM7.87832 8.44259L10.137 10.6973L11.1967 9.63565L8.93804 7.38099L7.87832 8.44259Z" fill="white"/>
+        </svg>
+        <div class="search-text">검색</div>
+      </div>
+      <!-- 다운로드 버튼 -->
+      <div class="download-btn" id="mem_reg_btn" <% if (user_role == 1) { %>onclick="location.href='/admin/dataif/excel'"<% } else { %>onclick="showWarning()"<% } %>>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="11" viewBox="0 0 12 11" fill="none">
+          <path d="M2.08325 7.49999C2.08325 7.08578 1.74747 6.74999 1.33325 6.74999C0.919038 6.74999 0.583252 7.08578 0.583252 7.49999H2.08325ZM1.33325 8.16666H0.583252H1.33325ZM11.4166 7.49999C11.4166 7.08578 11.0808 6.74999 10.6666 6.74999C10.2524 6.74999 9.91659 7.08578 9.91659 7.49999H11.4166ZM5.41427 7.69814C5.15551 8.02159 5.20795 8.49356 5.5314 8.75231C5.85484 9.01107 6.32681 8.95863 6.58557 8.63518L5.41427 7.69814ZM9.25224 5.30185C9.51099 4.9784 9.45855 4.50643 9.13511 4.24768C8.81166 3.98892 8.33969 4.04136 8.08093 4.36481L9.25224 5.30185ZM5.41427 8.63518C5.67302 8.95863 6.14499 9.01107 6.46844 8.75231C6.79189 8.49356 6.84433 8.02159 6.58557 7.69814L5.41427 8.63518ZM3.9189 4.36481C3.66015 4.04136 3.18818 3.98892 2.86473 4.24768C2.54128 4.50643 2.48884 4.9784 2.7476 5.30185L3.9189 4.36481ZM5.24992 8.16666C5.24992 8.58088 5.58571 8.91666 5.99992 8.91666C6.41413 8.91666 6.74992 8.58088 6.74992 8.16666H5.24992ZM6.74992 0.833328C6.74992 0.419115 6.41413 0.0833282 5.99992 0.0833282C5.58571 0.0833282 5.24992 0.419115 5.24992 0.833328H6.74992ZM0.583252 7.49999V8.16666H2.08325V7.49999H0.583252ZM0.583252 8.16666C0.583252 9.68544 1.81447 10.9167 3.33325 10.9167V9.41666C2.6429 9.41666 2.08325 8.85702 2.08325 8.16666H0.583252ZM3.33325 10.9167H8.66659V9.41666H3.33325V10.9167ZM8.66659 10.9167C10.1854 10.9167 11.4166 9.68544 11.4166 8.16666H9.91659C9.91659 8.85702 9.35694 9.41666 8.66659 9.41666V10.9167ZM11.4166 8.16666V7.49999H9.91659V8.16666H11.4166ZM6.58557 8.63518L9.25224 5.30185L8.08093 4.36481L5.41427 7.69814L6.58557 8.63518ZM6.58557 7.69814L3.9189 4.36481L2.7476 5.30185L5.41427 8.63518L6.58557 7.69814ZM6.74992 8.16666V0.833328H5.24992V8.16666H6.74992Z" fill="white"/>
+        </svg>
+        <div class="download-text">다운로드</div>
+      </div>
+      <!-- 등록 버튼 -->
+      <div class="register-btn" id="mem_reg_btn" onclick="location.href='/admin/auth/signup'">
+        <div class="register-text">등록</div>
+      </div>
+    </div>
+  </form>
+    <script>
+      function validateSearch() {
+        var searchInput = document.getElementById("search").value;
+        if (searchInput.trim() === "") {
+          alert("검색어를 입력해주세요.");
+          document.getElementById("search").focus();
+          return false;
+        }
+        return true;
+      }
+
+      function showWarning() {
+        alert("권한이 없습니다.");
+      }
+    </script>
+    <table id="mem_table">
+      <thead>
+        <tr><th>아이디</th>
+        <th>이름</th>
+        <th>권한</th>
+        <th>거주지</th>
+        <th>사용자 구분</th>
+        <th>가입일</th>
+        <th>무화과</th>
+        <!-- <th>푸시</th>
+        <th>이메일</th>
+        <th>sms</th> -->
+        <th>수정</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% if (posts.length === 0) { %>
+          <tr>
+            <td colspan="10">조회된 데이터가 없습니다.</td>
+          </tr>
+        <% } else { %>
+          <% for(var i=0; i<posts.length; i++){ %>
+            <tr>
+              <td><%= posts[i].userid %></td>
+              <td><%= posts[i].user_name %></td>
+              <td><%= role_code_to_class(posts[i].user_role) %></td>
+              <td><%= emd_code_to_name(posts[i].emd_class_code,code_data) %></td>
+              <td><%= user_type_to_name(posts[i].user_type,code_data) %></td>
+              <td><%= `${posts[i].ins_date.getFullYear()}` + `-`+ `${posts[i].ins_date.getMonth()+1}` + `-`+ `${posts[i].ins_date.getDate()}`%></td>
+              <td><a href="/admin/dataif/figManage/<%=posts[i].userid%>" style="color: #0000FF; text-decoration: underline;"><%=posts[i].fig%></a></td>
+              <td>
+                <a href="/admin/dataif/update/<%=posts[i].userid %>">수정</a>
+              </td>
+              <td><a href="/admin/dataif/delete/<%= posts[i].userid %>" onclick="return delMem()">삭제</a></td>
+              <script>
+                function delMem(){
+                  if(confirm("정말 삭제하시겠습니까?")){
+                    return true;
+                  }else{
+                    return false;
+                  }
+                }
+              </script>
+            </tr>
+            <% } %>
+          <% } %>
+      </tbody>
+    </table>
+    <div id="mem_paging">
+      <% if (totalPage > 1) { %> <!-- 전체 페이지가 1페이지 이상일 경우에만 페이징 표시 -->
+      <div class="ui pagination menu">
+        <a class="icon item" href="/admin/dataif/?page=<%=page-1 %>">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <% var startPage = Math.max(page - 1, 1); %>
+        <% var endPage = Math.min(page + 1, totalPage); %>
+        <% if (startPage === 1) { %>
+          <% endPage = Math.min(3, totalPage); %>
+        <% } %>
+        <% if (endPage === totalPage) { %>
+          <% startPage = Math.max(endPage - 2, 1); %>
+        <% } %>
+        <% for (var i = startPage; i <= endPage; i++) { %>
+          <% if (i === page) { %>
+            <a class="active item"><%=i %></a>
+          <% } else { %>
+            <a class="item" href="/admin/dataif/?page=<%=i %>"><%=i %></a>
+          <% } %>
+        <% } %>
+        <a class="icon item" href="/admin/dataif/?page=<%=page+1 %>">
+          <i class="fas fa-chevron-right"></i> <!-- Font Awesome 다음 버튼 아이콘 -->
+        </a>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "fs-extra": "^11.1.0",
+    "iconv-lite": "^0.6.3",
+    "json2csv": "^6.0.0-alpha.2",
+    "json2xls": "^0.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mariadb": "^2.5.3",
+    "mongoose": "^6.8.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.2",
+    "nodemon": "^2.0.20",
+    "openai": "^3.3.0",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "pbkdf2-password": "^1.2.1",
+    "promisfy": "^1.2.0",
+    "uuidv4": "^6.2.13",
+    "winston": "^3.8.2",
+    "xlsx": "^0.18.5"
+  },
+  "name": "node",
+  "version": "1.0.0",
+  "main": "app.js",
+  "bin": {
+    "node": "bin/www.js"
+  },
+  "scripts": {
+    "start": "nodemon ./bin/www.js",
+    "test": "echo \"Tests are not specified yet.\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

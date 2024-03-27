@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="/semantic/layout.css">
+  <link rel="stylesheet" href="/semantic/semantic.min.css">
+  <link rel="stylesheet" href="/css/home/policy/banner.css">
+  <link rel="stylesheet" href="/css/home/layout.css">
+  <script src="/ckeditor/build/ckeditor.js"></script>
+</head>
+<body>
+  <%- include('../layout.ejs', { pageTitle: 'GPT' }) %>
+  <section>
+    <!-- 테스트 페이지 -->
+    <div id="chat-container">
+      <div id="chat-log"></div>
+      <input type="text" id="user-input" placeholder="Type your message..." />
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // ChatGPT API 호출 함수
+        function callChatGPTAPI(message) {
+          const apiEndpoint = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
+          const apiKey = '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';
+
+          $.ajax({
+            url: apiEndpoint,
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${apiKey}`
+            },
+            method: 'POST',
+            data: JSON.stringify({
+              prompt: message,
+              max_tokens: 1000
+            }),
+            success: function(response) {
+              // ChatGPT의 응답 처리
+              const reply = response.choices[0].text.trim();
+              $('#chat-log').append('<div class="chat-message"><span class="bot-message">' + reply + '</span></div>');
+            },
+            error: function(error) {
+              console.error(error);
+            }
+          });
+        }
+
+        // 사용자 입력 처리
+        $('#user-input').keydown(function(event) {
+          if (event.keyCode === 13) {  // Enter 키가 눌렸을 때
+            const userInput = $('#user-input').val();
+            $('#chat-log').append('<div class="chat-message"><span class="user-message">' + userInput + '</span></div>');
+            $('#user-input').val('');
+
+            // ChatGPT API 호출
+            callChatGPTAPI(userInput);
+          }
+        });
+      });
+    </script>
+  </section>
+</body>
+</html>
